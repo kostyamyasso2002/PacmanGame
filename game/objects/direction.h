@@ -1,8 +1,5 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
 
-#ifndef GAME_DIRECTION_H
-#define GAME_DIRECTION_H
-
-#endif //GAME_DIRECTION_H
+enum class Direction {
+    LEFT, RIGHT, DOWN, UP, None
+};

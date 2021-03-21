@@ -1,8 +1,6 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
 
-#ifndef GAME_COLOR_H
-#define GAME_COLOR_H
-
-#endif //GAME_COLOR_H
+class Color {
+public:
+    std::string color;
+};

@@ -1,8 +1,21 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
+#include "strategy.h"
 
-#ifndef GAME_OBJECTCONTROLLER_H
-#define GAME_OBJECTCONTROLLER_H
+class ObjectController {
+public:
+    virtual void food() = 0;
+    virtual void gain() = 0;
+};
 
-#endif //GAME_OBJECTCONTROLLER_H
+class PacManController : public ObjectController {
+public:
+    PacMan pacman;
+    void move();
+};
+
+class GhostController : public ObjectController {
+public:
+    Ghost ghost;
+    std::unique_ptr<Strategy> strategy;
+    void DoNextStep();
+};

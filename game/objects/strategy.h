@@ -1,8 +1,23 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
+#include "field.h"
+#include "direction.h"
 
-#ifndef GAME_STRATEGY_H
-#define GAME_STRATEGY_H
+class Strategy {
+public:
+    virtual Direction FindNextStep(Field map, int x, int y) = 0;
+};
 
-#endif //GAME_STRATEGY_H
+class EasyStrategy : public Strategy {
+public:
+    virtual Direction FindNextStep(Field map, int x, int y) override;
+};
+
+class NormalStrategy : public Strategy {
+public:
+    virtual Direction FindNextStep(Field map, int x, int y) override;
+};
+
+class HardStrategy : public Strategy {
+public:
+    virtual Direction FindNextStep(Field map, int x, int y) override;
+};

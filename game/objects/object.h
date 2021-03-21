@@ -1,8 +1,21 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
 
-#ifndef GAME_OBJECT_H
-#define GAME_OBJECT_H
+class Object {
+public:
+    int XCoordinate;
+    int YCoordinate;
+    virtual void Move(int x, int y) = 0;
+};
 
-#endif //GAME_OBJECT_H
+class PacMan : public Object {
+public:
+    int Direction;
+    int health_point;
+    int color;
+    virtual void Move(int x, int y) override;
+};
+
+class Ghost : public Object {
+public:
+    virtual void Move(int x, int y) override;
+};

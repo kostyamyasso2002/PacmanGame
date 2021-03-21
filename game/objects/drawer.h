@@ -1,8 +1,10 @@
-//
-// Created by p1rat on 21.03.2021.
-//
+#pragma once
+#include "color.h"
 
-#ifndef GAME_DRAWER_H
-#define GAME_DRAWER_H
-
-#endif //GAME_DRAWER_H
+class Drawer {
+public:
+    std::vector<std::vector<char>> field;
+    std::vector<std::vector<Color>> color;
+    void ChangeSymbol(int x, int y, char newChar, Color newColor);
+    void Print();
+};
