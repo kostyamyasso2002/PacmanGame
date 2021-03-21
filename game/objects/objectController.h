@@ -1,0 +1,8 @@
+//
+// Created by p1rat on 21.03.2021.
+//
+
+#ifndef GAME_OBJECTCONTROLLER_H
+#define GAME_OBJECTCONTROLLER_H
+
+#endif //GAME_OBJECTCONTROLLER_H
