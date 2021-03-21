@@ -7,7 +7,15 @@
 
 class Field {
 public:
-    std::vector<std::vector<Ceil>> map;
+    int w;
+    int h;
+    std::vector<std::vector<std::unique_ptr<Ceil>>> map;
+    Field(int h, int w) : h(h), w(w) {
+        std::vector<std::unique_ptr<Ceil>> a;
+        for (int i = 0; i < w; ++i) {
+            
+        }
+    }
 };
 
 class GameField {
