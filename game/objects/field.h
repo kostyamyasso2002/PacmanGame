@@ -1,8 +1,9 @@
 #include "direction.h"
 #include "objectController.h"
 #include "ceil.h"
-#pragma once
 #include <memory>
+#include <vector>
+#pragma once
 
 class Field {
 public:
