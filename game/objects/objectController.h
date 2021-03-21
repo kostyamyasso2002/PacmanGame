@@ -1,5 +1,5 @@
-#pragma once
 #include "strategy.h"
+#pragma once
 
 class ObjectController {
 public:

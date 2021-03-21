@@ -1,6 +1,6 @@
-#pragma once
 #include "field.h"
 #include "direction.h"
+#pragma once
 
 class Strategy {
 public:

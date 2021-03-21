@@ -1,7 +1,7 @@
-#pragma once
 #include "direction.h"
 #include "objectController.h"
 #include "ceil.h"
+#pragma once
 #include <memory>
 
 class Field {

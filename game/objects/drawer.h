@@ -1,5 +1,5 @@
-#pragma once
 #include "color.h"
+#pragma once
 
 class Drawer {
 public:
