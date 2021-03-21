@@ -6,31 +6,14 @@
 
 class Drawer {
  public:
-  int w;
-  int h;
+  int width_;
+  int height_;
   std::vector<std::vector<char>> field;
   std::vector<std::vector<Color>> color;
   void ChangeSymbol(int x, int y, char newChar, Color newColor);
   void Print();
 
-  Drawer(int h, int w): h(h), w(w) {
-    color.resize(h, std::vector<Color>(w));
-    field.resize(h, std::vector<char>(w, '.'));
-  }
+  Drawer(int height, int width);
+
+  void Flush();
 };
-
-void Drawer::ChangeSymbol(int x, int y, char newChar, Color newColor) {
-  field[x][y] = newChar;
-  color[x][y] = newColor;
-}
-
-void Drawer::Print() {
-  system("clear");
-  for (int x = 0; x < h; ++x) {
-    for (int y = 0; y < w; ++y) {
-      std::string output = color[x][y].color + field[x][y];
-      std::cout << output;
-    }
-    std::cout << std::endl;
-  }
-}

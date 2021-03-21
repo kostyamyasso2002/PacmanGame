@@ -1,5 +1,5 @@
 #include <memory>
-
+#include "object.h"
 #pragma once
 
 class Strategy;
@@ -13,9 +13,9 @@ class ObjectController {
 class PacManController : public ObjectController {
  public:
   PacMan pacman;
-  void move(int x, int y);
-  virtual void food() override {}
-  virtual void gain() override {}
+  void Move(int x, int y);
+  void food() override;
+  void gain() override ;
 };
 
 class GhostController : public ObjectController {

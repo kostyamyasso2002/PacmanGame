@@ -10,17 +10,11 @@ class Ceil {
 };
 
 class Movable : public Ceil {
-
+  virtual bool CanMove(std::unique_ptr<ObjectController> obj) override;
 };
 
 class Empty : public Movable {
-  virtual void Interact(std::unique_ptr<ObjectController> obj) override {
-
-  }
-
-  virtual bool CanMove(std::unique_ptr<ObjectController> obj) override {
-    return true;
-  }
+  void Interact(std::unique_ptr<ObjectController> obj) override;
 };
 
 class Food : public Movable {
@@ -32,5 +26,5 @@ class Power : public Movable {
 };
 
 class Wall : public Ceil {
-
+  bool CanMove(std::unique_ptr<ObjectController> obj) override;
 };
