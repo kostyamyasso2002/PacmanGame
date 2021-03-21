@@ -21,6 +21,8 @@ class PacManController : public ObjectController {
 class GhostController : public ObjectController {
  public:
   Ghost ghost;
-  std::unique_ptr<Strategy> strategy;
+  std::shared_ptr<Strategy> strategy;
   void DoNextStep();
+  void food() override;
+  void gain() override;
 };

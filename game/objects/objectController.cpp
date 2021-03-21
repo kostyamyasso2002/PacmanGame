@@ -15,3 +15,11 @@ void PacManController::gain() {
 void GhostController::DoNextStep() {
   ghost.Move(1, 0);
 }
+
+void GhostController::food() {
+
+}
+
+void GhostController::gain() {
+
+}

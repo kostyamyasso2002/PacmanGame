@@ -22,8 +22,8 @@ class GameField {
   Field field;
   int width_;
   int height_;
-  std::unique_ptr<PacManController> pacman;
- // std::vector<std::unique_ptr<GhostController>> ghosts;
+  std::shared_ptr<PacManController> pacman;
+  std::vector<std::shared_ptr<GhostController>> ghosts;
   void DoNextIteration(Direction direction);
 
   GameField(int height, int width);
