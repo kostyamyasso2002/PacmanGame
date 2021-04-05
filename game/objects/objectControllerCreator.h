@@ -4,18 +4,18 @@
 #pragma once
 
 class ObjectControllerCreator {
-private:
+protected:
     std::shared_ptr<ObjectCreator> creator;
 public:
     virtual std::shared_ptr<ObjectController> CreateObjectController() = 0;
 };
 
-class PacManControllerCreator : ObjectControllerCreator {
+class PacManControllerCreator : public ObjectControllerCreator {
 public:
     std::shared_ptr<ObjectController> CreateObjectController() override;
 };
 
-class GhostControllerCreator : ObjectControllerCreator {
+class GhostControllerCreator : public ObjectControllerCreator {
 public:
     std::shared_ptr<ObjectController> CreateObjectController() override;
 };

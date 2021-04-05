@@ -15,7 +15,7 @@ class PacManController : public ObjectController {
   PacMan pacman;
   void Move(int x, int y);
   void food() override;
-  void gain() override ;
+  void gain() override;
 };
 
 class GhostController : public ObjectController {
