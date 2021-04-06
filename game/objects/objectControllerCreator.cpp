@@ -1,7 +1,12 @@
 #include "objectControllerCreator.h"
 
-#pragma once
+//#pragma once
 
 std::shared_ptr<ObjectController> PacManControllerCreator::CreateObjectController() {
-    return std::make_shared<PacManController>(creator);
+  auto x = std::make_shared<PacManController>(creator->CreateObject());
+  return x;
+}
+
+std::shared_ptr<ObjectController> GhostControllerCreator::CreateObjectController() {
+    return std::make_shared<GhostController>(creator->CreateObject());
 }

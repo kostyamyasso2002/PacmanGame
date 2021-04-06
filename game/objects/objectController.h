@@ -1,4 +1,5 @@
 #include <memory>
+#include <utility>
 #include "object.h"
 #pragma once
 
@@ -12,7 +13,9 @@ class ObjectController {
 
 class PacManController : public ObjectController {
  public:
-  PacMan pacman;
+  PacManController(const std::shared_ptr<Object>& pacman): pacman_(std::dynamic_pointer_cast<PacMan>(pacman)) {}
+
+  std::shared_ptr<PacMan> pacman_;
   void Move(int x, int y);
   void food() override;
   void gain() override;
@@ -20,7 +23,10 @@ class PacManController : public ObjectController {
 
 class GhostController : public ObjectController {
  public:
-  Ghost ghost;
+  GhostController(const std::shared_ptr<Object>& ghost): ghost_(std::dynamic_pointer_cast<Ghost>(ghost)) {
+
+  }
+  std::shared_ptr<Ghost> ghost_;
   std::shared_ptr<Strategy> strategy;
   void DoNextStep();
   void food() override;
