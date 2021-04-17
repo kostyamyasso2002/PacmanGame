@@ -5,8 +5,8 @@
 
 class Object {
  public:
-  int XCoordinate;
-  int YCoordinate;
+  int x_coordinate;
+  int y_coordinate;
   virtual void Move(int x, int y) = 0;
 
   virtual ~Object() = default;
