@@ -3,9 +3,9 @@
 #pragma once
 
 std::shared_ptr<Object> PacManCreator::CreateObject() {
-    return std::make_shared<PacMan>();
+    return std::make_shared<PacMan>(color_);
 }
 
 std::shared_ptr<Object> GhostCreator::CreateObject() {
-    return std::make_shared<Ghost>();
+    return std::make_shared<Ghost>(color_);
 }

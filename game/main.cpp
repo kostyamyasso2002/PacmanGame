@@ -1,9 +1,6 @@
 #include "objects/object.h"
 #include "objects/objectController.h"
 #include "objects/ceil.h"
-#include "objects/strategy.h"
-#include "objects/field.h"
-#include "objects/drawer.h"
 #include "objects/objectControllerCreator.h"
 
 #include <thread>
