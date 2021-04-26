@@ -6,11 +6,11 @@
 class Cell {
  public:
   virtual void Interact(std::shared_ptr<ObjectController> obj) = 0;
-  virtual bool CanMove(std::shared_ptr<ObjectController> obj) = 0;
+  virtual bool CanMove() = 0;
 };
 
 class Movable : public Cell {
-  virtual bool CanMove(std::shared_ptr<ObjectController> obj) override;
+  virtual bool CanMove() override;
 };
 
 class Empty : public Movable {
@@ -26,5 +26,5 @@ class Power : public Movable {
 };
 
 class Wall : public Cell {
-  bool CanMove(std::shared_ptr<ObjectController> obj) override;
+  bool CanMove() override;
 };
