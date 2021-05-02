@@ -3,14 +3,14 @@
 
 #pragma once
 
-class Ceil {
+class Cell {
  public:
   virtual void Interact(std::shared_ptr<ObjectController> obj) = 0;
-  virtual bool CanMove(std::shared_ptr<ObjectController> obj) = 0;
+  virtual bool CanMove() = 0;
 };
 
-class Movable : public Ceil {
-  virtual bool CanMove(std::shared_ptr<ObjectController> obj) override;
+class Movable : public Cell {
+  virtual bool CanMove() override;
 };
 
 class Empty : public Movable {
@@ -25,6 +25,6 @@ class Power : public Movable {
 
 };
 
-class Wall : public Ceil {
-  bool CanMove(std::shared_ptr<ObjectController> obj) override;
+class Wall : public Cell {
+  bool CanMove() override;
 };

@@ -23,9 +23,7 @@ class PacManController : public ObjectController {
 
 class GhostController : public ObjectController {
  public:
-  GhostController(const std::shared_ptr<Object>& ghost): ghost_(std::dynamic_pointer_cast<Ghost>(ghost)) {
-
-  }
+  GhostController(const std::shared_ptr<Object>& ghost): ghost_(std::dynamic_pointer_cast<Ghost>(ghost)) {}
   std::shared_ptr<Ghost> ghost_;
   std::shared_ptr<Strategy> strategy;
   void DoNextStep();
