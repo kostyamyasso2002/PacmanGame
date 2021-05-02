@@ -27,14 +27,14 @@ class SimpleDrawerDecorator : public SimpleDrawer {
   void out() override;
 };
 
-class SimpleDrawerDecoratorA : public SimpleDrawerDecorator {
+class SimpleDrawerDecoratorTitle : public SimpleDrawerDecorator {
  public:
-  SimpleDrawerDecoratorA(std::shared_ptr<SimpleDrawer>& wrappee);
+  SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee);
   void out() override;
 };
 
-class SimpleDrawerDecoratorB : public SimpleDrawerDecorator {
+class SimpleDrawerDecoratorRules : public SimpleDrawerDecorator {
  public:
-  SimpleDrawerDecoratorB(std::shared_ptr<SimpleDrawer>& wrappee);
+  SimpleDrawerDecoratorRules(std::shared_ptr<SimpleDrawer>& wrappee);
   void out() override;
 };

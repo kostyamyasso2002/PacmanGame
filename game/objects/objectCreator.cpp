@@ -1,7 +1,5 @@
 #include "objectCreator.h"
 
-#pragma once
-
 std::shared_ptr<Object> PacManCreator::CreateObject() {
     return std::make_shared<PacMan>(color_);
 }

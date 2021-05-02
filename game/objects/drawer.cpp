@@ -1,4 +1,3 @@
-#pragma once
 #include "drawer.h"
 
 void BasicSimpleDrawer::AddString(std::string str) {
@@ -20,16 +19,16 @@ void SimpleDrawerDecorator::out() {
   wrappee->out();
 }
 
-SimpleDrawerDecoratorA::SimpleDrawerDecoratorA(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
+SimpleDrawerDecoratorTitle::SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
-void SimpleDrawerDecoratorA::out() {
+void SimpleDrawerDecoratorTitle::out() {
   std::cout << "KEK" << std::endl;
   wrappee->out();
 }
 
-SimpleDrawerDecoratorB::SimpleDrawerDecoratorB(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
+SimpleDrawerDecoratorRules::SimpleDrawerDecoratorRules(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
-void SimpleDrawerDecoratorB::out() {
+void SimpleDrawerDecoratorRules::out() {
   std::cout << "LOL\n";
   wrappee->out();
 }
