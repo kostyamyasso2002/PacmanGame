@@ -22,13 +22,13 @@ void SimpleDrawerDecorator::out() {
 SimpleDrawerDecoratorTitle::SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
 void SimpleDrawerDecoratorTitle::out() {
-  std::cout << "KEK" << std::endl;
+  // output of Title
   wrappee->out();
 }
 
 SimpleDrawerDecoratorRules::SimpleDrawerDecoratorRules(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
 void SimpleDrawerDecoratorRules::out() {
-  std::cout << "LOL\n";
   wrappee->out();
+  // output of Rules
 }
