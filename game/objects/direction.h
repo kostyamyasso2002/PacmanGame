@@ -5,4 +5,4 @@ enum class Direction {
   LEFT, RIGHT, DOWN, UP, NONE
 };
 
-std::pair<int, int> DirectionToCoords(Direction direction);
+std::pair<int, int> DirectionToCoords(Direction direction) ;

@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "objectController.h"
 #include "objectCreator.h"
 #include "gameParametres.h"
@@ -14,7 +16,8 @@ class ObjectControllerCreator {
 
 class PacManControllerCreator : public ObjectControllerCreator {
  public:
-  PacManControllerCreator() {
+  PacManControllerCreator(GameParameters param) {
+    parameters = std::move(param);
     creator = std::make_shared<PacManCreator>(parameters.pacman_color);
   }
   std::shared_ptr<ObjectController> CreateObjectController() override;
@@ -22,7 +25,8 @@ class PacManControllerCreator : public ObjectControllerCreator {
 
 class GhostControllerCreator : public ObjectControllerCreator {
  public:
-  GhostControllerCreator() {
+  GhostControllerCreator(GameParameters param) {
+    parameters = param;
     creator = std::make_shared<GhostCreator>(parameters.ghost_color);
   }
   std::shared_ptr<ObjectController> CreateObjectController() override;

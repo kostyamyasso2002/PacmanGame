@@ -22,7 +22,8 @@ void SimpleDrawerDecorator::out() {
 SimpleDrawerDecoratorTitle::SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
 void SimpleDrawerDecoratorTitle::out() {
-  // output of Title
+  system("clear");
+  std::cout << "--------PACMAN---------\n";
   wrappee->out();
 }
 

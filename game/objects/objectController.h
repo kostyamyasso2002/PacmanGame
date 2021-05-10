@@ -9,6 +9,7 @@ class ObjectController {
  public:
   virtual void food() = 0;
   virtual void gain() = 0;
+
 };
 
 class PacManController : public ObjectController {
@@ -26,7 +27,7 @@ class GhostController : public ObjectController {
   GhostController(const std::shared_ptr<Object>& ghost): ghost_(std::dynamic_pointer_cast<Ghost>(ghost)) {}
   std::shared_ptr<Ghost> ghost_;
   std::shared_ptr<Strategy> strategy;
-  void DoNextStep();
+  void DoNextStep(Direction direction);
   void food() override;
   void gain() override;
 };

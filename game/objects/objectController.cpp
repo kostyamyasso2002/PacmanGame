@@ -12,7 +12,7 @@ void PacManController::gain() {
 
 }
 
-void GhostController::DoNextStep() {
+void GhostController::DoNextStep(Direction direction) {
   ghost_->Move(1, 0);
 }
 
