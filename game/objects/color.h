@@ -10,24 +10,18 @@ class Color {
 
 class White : public Color {
  public:
-  White() {
-    color = "\033[37m";
-  }
+  White();
   std::string GetName() override;
 };
 
 class Green : public Color {
  public:
-  Green() {
-    color = "\033[32m";
-  }
+  Green();
   std::string GetName() override;
 };
 
 class Red : public Color {
  public:
-  Red() {
-    color = "\033[31m";
-  }
+  Red();
   std::string GetName() override;
 };

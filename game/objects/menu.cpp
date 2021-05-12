@@ -1,6 +1,7 @@
 #include "menu.h"
 #include <iostream>
 #include "keyboard.h"
+#include "gameState.h"
 #include <chrono>
 #include <thread>
 
@@ -44,17 +45,16 @@ std::vector<std::vector<std::shared_ptr<Cell>>> Menu::CreateField(int height, in
 
 void Menu::Game() {
   system("clear");
-  GameParameters parameters(pacman_color_, ghost_color_, complexity_);
-  PacManControllerCreator creator(parameters);
-  GhostControllerCreator creator1(parameters);
+  PacManControllerCreator creator(parameters_);
+  GhostControllerCreator creator1(parameters_);
   std::shared_ptr<GhostGroup> group = std::make_shared<GhostGroup>();
-  group->AddGhost(std::dynamic_pointer_cast<GhostController>(creator1.CreateObjectController()));
-  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(creator.CreateObjectController());
-  GameField game_field(CreateField(10, 20), group, pac);
+  group->AddGhost(std::dynamic_pointer_cast<GhostController>(creator1.CreateObjectController(3, 3)));
+  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(creator.CreateObjectController(2, 2));
+  std::shared_ptr<GameField> game_field = std::make_shared<GameField>(CreateField(10, 20), group, pac);
   std::shared_ptr<SimpleDrawer> drawer = std::make_shared<BasicSimpleDrawer>();
   drawer = std::make_shared<SimpleDrawerDecoratorTitle>(drawer);
   drawer = std::make_shared<SimpleDrawerDecoratorHealth>(drawer, pac);
-  game_field.print(drawer);
+  game_field->print(drawer);
   Keyboard keyboard;
   while (true) {
     Direction dir = Direction::NONE;
@@ -65,15 +65,15 @@ void Menu::Game() {
         dir = new_dir;
       }
     }
-    int type = game_field.DoNextStep(dir);
-    game_field.print(drawer);
+    GameState type = game_field->DoNextStep(dir);
+    game_field->print(drawer);
     switch (type) {
-      case 0:
+      case GameState::CONTINUE:
         break;
-      case 1:
+      case GameState::WIN:
         std::cout << "Good Job! You are winner!!!\n";
         Start();
-      case 2:
+      case GameState::LOSE:
         std::cout << "You are looser:(\n";
         Start();
     }
@@ -85,7 +85,8 @@ void Menu::Settings() {
   std::cout << "Choose the item you want:\n";
   std::cout << "1 - choose PacMan color\n";
   std::cout << "2 - choose Ghosts color\n";
-  std::cout << "3 - return\n";
+  std::cout << "3 - change complexity\n";
+  std::cout << "4 - return\n";
   int type;
   std::cin >> type;
   switch (type) {
@@ -96,6 +97,10 @@ void Menu::Settings() {
       SetGhostColor();
       break;
     case 3:
+      ChangeComplexity();
+      break;
+    case 4:
+      system("clear");
       return;
     default:
       std::cout << "Try again\n";
@@ -103,9 +108,28 @@ void Menu::Settings() {
   Settings();
 }
 
+void Menu::ChangeComplexity() {
+  system("clear");
+  std::cout << "Choose complexity you want:\n";
+  std::cout << "1 - Normal\n";
+  std::cout << "2 - Hard\n";
+  int type;
+  std::cin >> type;
+  switch (type) {
+    case 1:
+      parameters_.complexity_ = Complexity::NORMAL;
+      break;
+    case 2:
+      parameters_.complexity_ = Complexity::HARD;
+      break;
+    default:
+      ChangeComplexity();
+  }
+}
+
 void Menu::SetPacmanColor() {
   system("clear");
-  std::cout << "Current color of pacman: " << pacman_color_->GetName() << "\n";
+  std::cout << "Current color of pacman: " << parameters_.pacman_color->GetName() << "\n";
   std::cout << "Choose color you want:\n";
   std::cout << "1 - White\n";
   std::cout << "2 - Red\n";
@@ -114,13 +138,13 @@ void Menu::SetPacmanColor() {
   std::cin >> type;
   switch (type) {
     case 1:
-      pacman_color_ = std::make_shared<White>();
+      parameters_.pacman_color = std::make_shared<White>();
       break;
     case 2:
-      pacman_color_ = std::make_shared<Red>();
+      parameters_.pacman_color = std::make_shared<Red>();
       break;
     case 3:
-      pacman_color_ = std::make_shared<Green>();
+      parameters_.pacman_color = std::make_shared<Green>();
       break;
     default:
       std::cout << "Try again\n";
@@ -130,7 +154,7 @@ void Menu::SetPacmanColor() {
 
 void Menu::SetGhostColor() {
   system("clear");
-  std::cout << "Current color of ghost: " << pacman_color_->GetName() << "\n";
+  std::cout << "Current color of ghost: " << parameters_.ghost_color->GetName() << "\n";
   std::cout << "Choose color you want:\n";
   std::cout << "1 - White\n";
   std::cout << "2 - Red\n";
@@ -139,13 +163,13 @@ void Menu::SetGhostColor() {
   std::cin >> type;
   switch (type) {
     case 1:
-      ghost_color_ = std::make_shared<White>();
+      parameters_.ghost_color = std::make_shared<White>();
       break;
     case 2:
-      ghost_color_ = std::make_shared<Red>();
+      parameters_.ghost_color = std::make_shared<Red>();
       break;
     case 3:
-      ghost_color_ = std::make_shared<Green>();
+      parameters_.ghost_color = std::make_shared<Green>();
       break;
     default:
       std::cout << "Try again\n";

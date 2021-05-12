@@ -17,7 +17,7 @@ class BasicSimpleDrawer : public SimpleDrawer {
  private:
   std::string buffer_;
  public:
-  void AddString(std::string str);
+  void AddString(std::string str) override;
   void out() override;
 };
 

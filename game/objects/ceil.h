@@ -24,12 +24,13 @@ class Food : public Movable {
   std::string Output() override;
 };
 
-class Power : public Movable {
-
-};
-
 class Wall : public Cell {
   bool CanMove() override;
   std::shared_ptr<Cell> Interact(std::shared_ptr<ObjectController> obj) override;
   std::string Output() override;
 };
+
+/*
+class Power : public Movable {
+
+};*/

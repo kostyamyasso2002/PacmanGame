@@ -4,18 +4,29 @@
 
 class Strategy {
  public:
-  virtual Direction ResolveNextStep(int x_from, int y_from, int x_to, int y_to) = 0;
+  virtual Direction ResolveNextStep(std::vector<std::vector<std::shared_ptr<Cell>>>& field,
+                                    int x_from,
+                                    int y_from,
+                                    int x_to,
+                                    int y_to) = 0;
 };
 
-class EasyStrategy: public Strategy {
+class NormalStrategy : public Strategy {
  public:
-  Direction ResolveNextStep(int x_from, int y_from, int x_to, int y_to) override;
+  Direction ResolveNextStep(std::vector<std::vector<std::shared_ptr<Cell>>>& field,
+                            int x_from,
+                            int y_from,
+                            int x_to,
+                            int y_to) override;
 };
 
-class HardStrategy: public Strategy {
+class HardStrategy : public Strategy {
  private:
-  std::shared_ptr<GameField> field_;
+
  public:
-  HardStrategy(const std::shared_ptr<GameField>& field);
-  Direction ResolveNextStep(int x_from, int y_from, int x_to, int y_to) override;
+  Direction ResolveNextStep(std::vector<std::vector<std::shared_ptr<Cell>>>& field,
+                            int x_from,
+                            int y_from,
+                            int x_to,
+                            int y_to) override;
 };
