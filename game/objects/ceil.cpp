@@ -4,8 +4,10 @@ bool Movable::CanMove() {
   return true;
 }
 
-void Empty::Interact(std::shared_ptr<ObjectController> obj) {
+std::shared_ptr<Cell> Empty::Interact(std::shared_ptr<ObjectController> obj) {
  //тут пусто
+
+  return std::make_shared<Empty>();
 }
 std::string Empty::Output() {
   return " ";
@@ -18,6 +20,14 @@ std::string Wall::Output() {
 bool Wall::CanMove() {
   return false;
 }
-void Wall::Interact(std::shared_ptr<ObjectController> obj) {
+std::shared_ptr<Cell> Wall::Interact(std::shared_ptr<ObjectController> obj) {
+  return std::make_shared<Wall>();
+}
 
+
+std::shared_ptr<Cell> Food::Interact(std::shared_ptr<ObjectController> obj) {
+  return obj->food();
+}
+std::string Food::Output() {
+  return ".";
 }

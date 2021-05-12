@@ -1,4 +1,5 @@
 #include "drawer.h"
+#include "objectController.h"
 
 void BasicSimpleDrawer::AddString(std::string str) {
   buffer_ += str;
@@ -22,7 +23,6 @@ void SimpleDrawerDecorator::out() {
 SimpleDrawerDecoratorTitle::SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
 void SimpleDrawerDecoratorTitle::out() {
-  system("clear");
   std::cout << "--------PACMAN---------\n";
   wrappee->out();
 }
@@ -32,4 +32,16 @@ SimpleDrawerDecoratorRules::SimpleDrawerDecoratorRules(std::shared_ptr<SimpleDra
 void SimpleDrawerDecoratorRules::out() {
   wrappee->out();
   // output of Rules
+}
+SimpleDrawerDecoratorHealth::SimpleDrawerDecoratorHealth(std::shared_ptr<SimpleDrawer>& wrappee, const std::shared_ptr<PacManController>& pacman)
+    : SimpleDrawerDecorator(wrappee), pacman(pacman) {
+}
+
+void SimpleDrawerDecoratorHealth::out() {
+  wrappee->out();
+  std::cout << "hp: " << pacman->pacman_->health_point << std::endl;
+}
+
+void SimpleDrawer::flush() {
+  system("clear");
 }

@@ -5,5 +5,5 @@ std::shared_ptr<Object> PacManCreator::CreateObject() {
 }
 
 std::shared_ptr<Object> GhostCreator::CreateObject() {
-    return std::make_shared<Ghost>(1, 1, color_);
+    return std::make_shared<Ghost>(2, 3, color_);
 }
