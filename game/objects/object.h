@@ -1,5 +1,6 @@
 #include "direction.h"
 #include "color.h"
+#include "constants.h"
 #include <memory>
 
 #pragma once
@@ -23,7 +24,7 @@ class PacMan : public Object {
   int health_point;
   void Move(int x, int y) override;
 
-  PacMan(int x_coordinate, int y_coordinate, std::shared_ptr<Color> color, int hp = 10);
+  PacMan(int x_coordinate, int y_coordinate, std::shared_ptr<Color> color, int hp = Constants::pacman_health);
 
   ~PacMan() override = default;
 };

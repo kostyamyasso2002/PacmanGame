@@ -39,7 +39,7 @@ SimpleDrawerDecoratorHealth::SimpleDrawerDecoratorHealth(std::shared_ptr<SimpleD
 
 void SimpleDrawerDecoratorHealth::out() {
   wrappee->out();
-  std::cout << "hp: " << pacman->pacman_->health_point << std::endl;
+  std::cout << "hp: " << pacman->GetHealth() << std::endl;
 }
 
 void SimpleDrawer::flush() {

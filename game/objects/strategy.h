@@ -22,7 +22,7 @@ class NormalStrategy : public Strategy {
 
 class HardStrategy : public Strategy {
  private:
-
+  std::vector<std::pair<int, int>> RandOrd(std::vector<std::pair<int, int>> src);
  public:
   Direction ResolveNextStep(std::vector<std::vector<std::shared_ptr<Cell>>>& field,
                             int x_from,

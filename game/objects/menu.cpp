@@ -2,6 +2,7 @@
 #include <iostream>
 #include "keyboard.h"
 #include "gameState.h"
+#include "constants.h"
 #include <chrono>
 #include <thread>
 
@@ -47,7 +48,7 @@ void Menu::Game() {
   system("clear");
   PacManControllerCreator creator(parameters_);
   GhostControllerCreator creator1(parameters_);
-  std::shared_ptr<GhostGroup> group = std::make_shared<GhostGroup>();
+  std::shared_ptr<GhostGroup> group = std::make_shared<GhostGroup>(parameters_.complexity_);
   group->AddGhost(std::dynamic_pointer_cast<GhostController>(creator1.CreateObjectController(3, 3)));
   std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(creator.CreateObjectController(2, 2));
   std::shared_ptr<GameField> game_field = std::make_shared<GameField>(CreateField(10, 20), group, pac);
@@ -58,8 +59,9 @@ void Menu::Game() {
   Keyboard keyboard;
   while (true) {
     Direction dir = Direction::NONE;
-    for (int j = 0; j < 200; ++j) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    for (int j = 0; j < Constants::amount_ticks; ++j) {
+      int tick_duration = Constants::tick_duration;
+      std::this_thread::sleep_for(std::chrono::milliseconds(tick_duration));
       Direction new_dir = keyboard.SetDirection(keyboard.GetKey());
       if (new_dir != Direction::NONE) {
         dir = new_dir;

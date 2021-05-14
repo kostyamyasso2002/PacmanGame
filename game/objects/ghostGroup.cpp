@@ -1,6 +1,7 @@
 #include "ghostGroup.h"
 #include "gameField.h"
 #include "strategy.h"
+#include "constants.h"
 #include <cassert>
 
 void GhostGroup::ShowOnTheMap(std::vector<std::vector<std::string>>& map) {
@@ -36,7 +37,13 @@ void GhostGroup::InteractWithPacMan(std::shared_ptr<PacManController> pacman) {
     meeting_happened |= ghost->InteractWithPacMan(pacman);
   }
   if (meeting_happened) {
-    StunEverybody(2);
+    if (complexity_ == Complexity::NORMAL) {
+      StunEverybody(Constants::normal_stun_time);
+    }
+    switch (complexity_) {
+      case Complexity::NORMAL: StunEverybody(Constants::normal_stun_time);
+      case Complexity::HARD: StunEverybody(Constants::hard_stun_time);
+    }
   }
 }
 

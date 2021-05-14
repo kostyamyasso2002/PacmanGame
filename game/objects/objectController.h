@@ -24,6 +24,7 @@ class PacManController : public ObjectController {
   int GetXCoordinate();
   int GetYCoordinate();
   std::string GetOutput() override;
+  int GetHealth();
 };
 
 class GhostController : public ObjectController {

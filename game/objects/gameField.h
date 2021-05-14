@@ -12,7 +12,7 @@ class GameField {
   std::vector<std::vector<std::shared_ptr<Cell>>> cells_;
   std::shared_ptr<GhostGroup> ghost_group_;
   std::shared_ptr<PacManController> pacman_;
-  int num = 0;
+  int move_number = 0;
   int food_amount = 0;
   friend class GhostGroup;
   friend class HardStrategy;

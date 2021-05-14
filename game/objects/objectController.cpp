@@ -71,6 +71,9 @@ PacManController::PacManController(const std::shared_ptr<Object>& pacman)
 std::string PacManController::GetOutput() {
   return pacman_->color_->color + "P" + pacman_->color_->SetDefaultColor();
 }
+int PacManController::GetHealth() {
+  return pacman_->health_point;
+}
 
 std::string GhostController::GetOutput() {
   return ghost_->color_->color + "G" + ghost_->color_->SetDefaultColor();
