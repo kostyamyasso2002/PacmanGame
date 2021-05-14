@@ -5,26 +5,32 @@
 
 class Cell {
  public:
-  virtual void Interact(std::shared_ptr<ObjectController> obj) = 0;
+  virtual std::shared_ptr<Cell> Interact(std::shared_ptr<ObjectController> obj) = 0;
   virtual bool CanMove() = 0;
+  virtual std::string Output() = 0;
 };
 
 class Movable : public Cell {
-  virtual bool CanMove() override;
+  bool CanMove() override;
 };
 
 class Empty : public Movable {
-  void Interact(std::shared_ptr<ObjectController> obj) override;
+  std::shared_ptr<Cell> Interact(std::shared_ptr<ObjectController> obj) override;
+  std::string Output() override;
 };
 
 class Food : public Movable {
-
-};
-
-class Power : public Movable {
-
+  std::shared_ptr<Cell> Interact(std::shared_ptr<ObjectController> obj) override;
+  std::string Output() override;
 };
 
 class Wall : public Cell {
   bool CanMove() override;
+  std::shared_ptr<Cell> Interact(std::shared_ptr<ObjectController> obj) override;
+  std::string Output() override;
 };
+
+/*
+class Power : public Movable {
+
+};*/

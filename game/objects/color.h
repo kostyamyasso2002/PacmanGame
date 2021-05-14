@@ -1,19 +1,27 @@
-#include <iostream>
 #pragma once
+#include <iostream>
 
 class Color {
  public:
   std::string color;
+  virtual std::string GetName() = 0;
+  std::string SetDefaultColor();
 };
 
-class Green : Color {
-  Green() {
-    color = "";
-  }
+class White : public Color {
+ public:
+  White();
+  std::string GetName() override;
 };
 
-class Red : Color {
-  Red() {
-    color = "";
-  }
+class Green : public Color {
+ public:
+  Green();
+  std::string GetName() override;
+};
+
+class Red : public Color {
+ public:
+  Red();
+  std::string GetName() override;
 };

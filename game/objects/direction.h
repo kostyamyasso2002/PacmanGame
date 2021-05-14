@@ -6,3 +6,6 @@ enum class Direction {
 };
 
 std::pair<int, int> DirectionToCoords(Direction direction);
+Direction CoordsToDirection(std::pair<int, int> coordinates);
+
+Direction GetRandomDirection();

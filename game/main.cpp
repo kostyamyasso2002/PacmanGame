@@ -1,17 +1,7 @@
-#include "objects/object.h"
-#include "objects/objectController.h"
-#include "objects/ceil.h"
-#include "objects/objectControllerCreator.h"
-#include "objects/drawer.h"
-
-#include <thread>
-#include <chrono>
+#include "objects/menu.h"
 
 int main() {
-  PacManControllerCreator a;
-  std::shared_ptr<PacManController> t = std::static_pointer_cast<PacManController>(a.CreateObjectController());
-  t->Move(1, 2);
-
-
+  Menu menu;
+  menu.Start();
   return 0;
 }
