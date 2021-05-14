@@ -1,6 +1,6 @@
 #include "direction.h"
 #include "constants.h"
-#include <random>
+#include "random.h"
 #include <chrono>
 
 std::pair<int, int> DirectionToCoords(Direction direction) {
@@ -30,10 +30,8 @@ Direction CoordsToDirection(std::pair<int, int> coordinates) {
 }
 
 Direction GetRandomDirection() {
-  std::mt19937 Generate
-      (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count());
   int rnd =
-      static_cast<int>((Generate() % Constants::amount_directions + Constants::amount_directions))
+      static_cast<int>((Random::GetNextNumber() % Constants::amount_directions + Constants::amount_directions))
           % Constants::amount_directions;
   return Direction(rnd);
 }
