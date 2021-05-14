@@ -39,6 +39,7 @@ std::shared_ptr<GameField> FieldGenerator::GenerateSimpleField(const GameParamet
         width - 2)));
   }
 
-  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(pacman_creator.CreateObjectController(1, 1));
+  std::shared_ptr<PacManController> pac =
+      std::dynamic_pointer_cast<PacManController>(pacman_creator.CreateObjectController(1, 1));
   return std::make_shared<GameField>(CreateEmptyField(height, width), group, pac);
 }
