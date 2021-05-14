@@ -56,13 +56,13 @@ void Menu::Game() {
   drawer = std::make_shared<SimpleDrawerDecoratorTitle>(drawer);
   drawer = std::make_shared<SimpleDrawerDecoratorHealth>(drawer, pac);
   game_field->print(drawer);
-  Keyboard keyboard;
+  //Keyboard keyboard;
   while (true) {
     Direction dir = Direction::NONE;
     for (int j = 0; j < Constants::amount_ticks; ++j) {
       int tick_duration = Constants::tick_duration;
       std::this_thread::sleep_for(std::chrono::milliseconds(tick_duration));
-      Direction new_dir = keyboard.SetDirection(keyboard.GetKey());
+      Direction new_dir = Keyboard::SetDirection(Keyboard::GetKey());
       if (new_dir != Direction::NONE) {
         dir = new_dir;
       }

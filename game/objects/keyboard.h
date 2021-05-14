@@ -9,10 +9,10 @@
 
 class Keyboard {
  public:
-  char GetKey();
-  Direction SetDirection(char key);
-  bool kbhit();
-  int mygetch();
+  static char GetKey();
+  static Direction SetDirection(char key);
+  static bool kbhit();
+  static int mygetch();
 
 };
 
