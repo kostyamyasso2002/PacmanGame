@@ -11,7 +11,6 @@ class GameField {
  private:
   std::vector<std::vector<std::shared_ptr<Cell>>> cells_;
   std::shared_ptr<GhostGroup> ghost_group_;
-  std::shared_ptr<PacManController> pacman_;
   int move_number = 0;
   int food_amount = 0;
   friend class GhostGroup;
@@ -22,4 +21,5 @@ class GameField {
             const std::shared_ptr<PacManController>& pacman);
   GameState DoNextStep(Direction direction);
   void print(std::shared_ptr<SimpleDrawer> drawer);
+  std::shared_ptr<PacManController> pacman_;
 };

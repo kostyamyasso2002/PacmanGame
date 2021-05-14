@@ -3,6 +3,7 @@
 #include "keyboard.h"
 #include "gameState.h"
 #include "constants.h"
+#include "fieldGenerator.h"
 #include <chrono>
 #include <thread>
 
@@ -46,15 +47,18 @@ std::vector<std::vector<std::shared_ptr<Cell>>> Menu::CreateField(int height, in
 
 void Menu::Game() {
   system("clear");
-  PacManControllerCreator creator(parameters_);
-  GhostControllerCreator creator1(parameters_);
-  std::shared_ptr<GhostGroup> group = std::make_shared<GhostGroup>(parameters_.complexity_);
-  group->AddGhost(std::dynamic_pointer_cast<GhostController>(creator1.CreateObjectController(3, 3)));
-  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(creator.CreateObjectController(2, 2));
-  std::shared_ptr<GameField> game_field = std::make_shared<GameField>(CreateField(10, 20), group, pac);
+//  PacManControllerCreator creator(parameters_);
+//  GhostControllerCreator creator1(parameters_);
+//  std::shared_ptr<GhostGroup> group = std::make_shared<GhostGroup>(parameters_.complexity_);
+//  group->AddGhost(std::dynamic_pointer_cast<GhostController>(creator1.CreateObjectController(3, 3)));
+//  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(creator.CreateObjectController(2, 2));
+//  std::shared_ptr<GameField> game_field = std::make_shared<GameField>(CreateField(10, 20), group, pac);
+
+  std::shared_ptr<GameField> game_field = FieldGenerator::GenerateSimpleField(parameters_);
+
   std::shared_ptr<SimpleDrawer> drawer = std::make_shared<BasicSimpleDrawer>();
   drawer = std::make_shared<SimpleDrawerDecoratorTitle>(drawer);
-  drawer = std::make_shared<SimpleDrawerDecoratorHealth>(drawer, pac);
+  drawer = std::make_shared<SimpleDrawerDecoratorHealth>(drawer, game_field->pacman_);
   game_field->print(drawer);
   //Keyboard keyboard;
   while (true) {

@@ -11,5 +11,6 @@ class Constants {
   static const int tick_duration = 1;
   static const int amount_ticks = 200;
 
-  static const int pacman_health = 8;
+  static const int hard_pacman_health = 5;
+  static const int normal_pacman_health = 10;
 };

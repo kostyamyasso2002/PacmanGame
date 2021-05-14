@@ -17,18 +17,12 @@ class ObjectControllerCreator {
 
 class PacManControllerCreator : public ObjectControllerCreator {
  public:
-  PacManControllerCreator(const GameParameters& param) {
-    parameters = param;
-    creator = std::make_shared<PacManCreator>(parameters.pacman_color);
-  }
+  PacManControllerCreator(const GameParameters& param);
   std::shared_ptr<ObjectController> CreateObjectController(int x_coordinate, int y_coordinate) override;
 };
 
 class GhostControllerCreator : public ObjectControllerCreator {
  public:
-  GhostControllerCreator(const GameParameters& param) {
-    parameters = param;
-    creator = std::make_shared<GhostCreator>(parameters.ghost_color);
-  }
+  GhostControllerCreator(const GameParameters& param);
   std::shared_ptr<ObjectController> CreateObjectController(int x_coordinate, int y_coordinate) override;
 };

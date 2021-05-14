@@ -24,7 +24,7 @@ class PacMan : public Object {
   int health_point;
   void Move(int x, int y) override;
 
-  PacMan(int x_coordinate, int y_coordinate, std::shared_ptr<Color> color, int hp = Constants::pacman_health);
+  PacMan(int x_coordinate, int y_coordinate, std::shared_ptr<Color> color, int hp);
 
   ~PacMan() override = default;
 };

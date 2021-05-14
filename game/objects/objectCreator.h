@@ -8,18 +8,18 @@ class ObjectCreator {
  protected:
   std::shared_ptr<Color> color_;
  public:
-  ObjectCreator(std::shared_ptr<Color> color) : color_(color) {}
-  virtual std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate) = 0;
+  ObjectCreator(std::shared_ptr<Color> color);
+  virtual std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate, int hp = 0) = 0;
 };
 
 class PacManCreator : public ObjectCreator {
  public:
-  PacManCreator(std::shared_ptr<Color> color) : ObjectCreator(color) {}
-  std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate) override;
+  PacManCreator(std::shared_ptr<Color> color);
+  std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate, int hp) override;
 };
 
 class GhostCreator : public ObjectCreator {
  public:
-  GhostCreator(std::shared_ptr<Color> color) : ObjectCreator(color) {}
-  std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate) override;
+  GhostCreator(std::shared_ptr<Color> color);
+  std::shared_ptr<Object> CreateObject(int x_coordinate, int y_coordinate, int hp) override;
 };

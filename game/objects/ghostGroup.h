@@ -12,7 +12,7 @@ class GhostGroup {
   std::vector<std::shared_ptr<GhostController>> ghosts;
   Complexity complexity_;
  public:
-  GhostGroup(Complexity complexity) :complexity_(complexity) {}
+  GhostGroup(Complexity complexity);
 
   void AddGhost(const std::shared_ptr<GhostController>& new_ghost);
   void DoNextStep(std::vector<std::vector<std::shared_ptr<Cell>>>&, int, int,

@@ -52,3 +52,5 @@ void GhostGroup::StunEverybody(int time) {
     ghost->Stun(time);
   }
 }
+
+GhostGroup::GhostGroup(Complexity complexity) : complexity_(complexity) {}
