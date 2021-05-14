@@ -18,4 +18,5 @@ class Menu {
   void Start();
   void Game();
   void Settings();
+  GameState DoStep(std::shared_ptr<GameField> game_field, std::shared_ptr<SimpleDrawer> drawer);
 };

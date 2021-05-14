@@ -18,8 +18,8 @@ std::vector<std::vector<std::shared_ptr<Cell>>> FieldGenerator::CreateEmptyField
 }
 
 std::shared_ptr<GameField> FieldGenerator::GenerateSimpleField(const GameParameters& parameters) {
-  const int height = 10;
-  const int width = 20;
+  const int height = 15;
+  const int width = 30;
 
   PacManControllerCreator pacman_creator(parameters);
   GhostControllerCreator ghost_creator(parameters);
@@ -39,6 +39,6 @@ std::shared_ptr<GameField> FieldGenerator::GenerateSimpleField(const GameParamet
         width - 2)));
   }
 
-  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(pacman_creator.CreateObjectController(2, 2));
+  std::shared_ptr<PacManController> pac = std::dynamic_pointer_cast<PacManController>(pacman_creator.CreateObjectController(1, 1));
   return std::make_shared<GameField>(CreateEmptyField(height, width), group, pac);
 }

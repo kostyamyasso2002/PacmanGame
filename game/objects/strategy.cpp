@@ -44,7 +44,7 @@ Direction HardStrategy::ResolveNextStep(std::vector<std::vector<std::shared_ptr<
 
 std::vector<std::pair<int, int>> HardStrategy::RandOrd(std::vector<std::pair<int, int>> src) {
   std::mt19937 Generate
-      (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+      (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
   for (int i = 0; i < src.size(); ++i) {
     std::swap(src[i], src[(Generate() % src.size() + src.size()) % src.size()]);
   }

@@ -23,7 +23,7 @@ void SimpleDrawerDecorator::out() {
 SimpleDrawerDecoratorTitle::SimpleDrawerDecoratorTitle(std::shared_ptr<SimpleDrawer>& wrappee) : SimpleDrawerDecorator(wrappee) {}
 
 void SimpleDrawerDecoratorTitle::out() {
-  std::cout << "--------PACMAN---------\n";
+  std::cout << "PACMAN GAME\n";
   wrappee->out();
 }
 
